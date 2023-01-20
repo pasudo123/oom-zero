@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+    application
 }
 
 group = "com.example"
@@ -21,6 +22,18 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+application {
+    // https://docs.gradle.org/current/userguide/application_plugin.html
+    // gradle task : bootRun
+    applicationDefaultJvmArgs = listOf(
+        "-Xms400m",
+        "-Xmx400m",
+        "-XX:+HeapDumpOnOutOfMemoryError",
+        "-XX:HeapDumpPath=${project.rootDir}"
+    )
+
 }
 
 tasks.withType<KotlinCompile> {
