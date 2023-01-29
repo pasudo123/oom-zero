@@ -1,3 +1,7 @@
 ### POST basic
 POST localhost:8085/dev/basic
 Content-Type: application/json
+
+### POST weak-reference
+POST localhost:8085/dev/weak-ref
+Content-Type: pplication/json

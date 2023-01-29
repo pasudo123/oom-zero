@@ -1,11 +1,12 @@
-package com.example.oomreference.develop
+package com.example.oomreference.service
 
+import com.example.oomreference.constant.CountUtil.CHECK_COUNT
+import com.example.oomreference.model.Person
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import java.util.UUID
 
 @Service
-class DevService {
+class BasicService {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -16,14 +17,11 @@ class DevService {
 
         try {
             while (true) {
-                persons.add(Person(
-                    "홍${UUID.randomUUID()}".substring(10),
-                    "홍${UUID.randomUUID()}".substring(10),
-                    "홍${UUID.randomUUID()}".substring(10)
-                ))
+                persons.add(Person.createRandom())
                 count++
+                // persons.last()
 
-                if (count % 1000000L == 0L) {
+                if (count % CHECK_COUNT == 0L) {
                     log.info("count : $count")
                 }
             }
