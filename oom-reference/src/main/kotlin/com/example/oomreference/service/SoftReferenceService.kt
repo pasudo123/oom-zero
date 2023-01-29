@@ -4,22 +4,22 @@ import com.example.oomreference.constant.CountUtil.CHECK_COUNT
 import com.example.oomreference.model.Person
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import java.lang.ref.SoftReference
 
 @Service
-class BasicService {
+class SoftReferenceService {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
     fun incMemory() {
 
-        val persons: MutableList<Person> = mutableListOf()
+        val persons: MutableList<SoftReference<Person>> = mutableListOf()
         var count = 0L
 
         try {
             while (true) {
-                persons.add(Person.createRandom())
+                persons.add(SoftReference(Person.createRandom()))
                 count++
-                // persons.last()
 
                 if (count % CHECK_COUNT == 0L) {
                     log.info("count : $count")

@@ -1,7 +1,11 @@
-### POST basic
-POST localhost:8085/dev/basic
+### POST strong-reference
+POST localhost:8085/dev/strong-ref
 Content-Type: application/json
 
 ### POST weak-reference
 POST localhost:8085/dev/weak-ref
-Content-Type: pplication/json
+Content-Type: application/json
+
+### POST soft-reference
+POST localhost:8085/dev/soft-ref
+Content-Type: application/json

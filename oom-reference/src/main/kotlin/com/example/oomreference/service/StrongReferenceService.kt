@@ -4,21 +4,20 @@ import com.example.oomreference.constant.CountUtil.CHECK_COUNT
 import com.example.oomreference.model.Person
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import java.lang.ref.WeakReference
 
 @Service
-class WeakReferenceService {
+class StrongReferenceService {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
     fun incMemory() {
 
-        val persons: MutableList<WeakReference<Person>> = mutableListOf()
+        val persons: MutableList<Person> = mutableListOf()
         var count = 0L
 
         try {
             while (true) {
-                persons.add(WeakReference(Person.createRandom()))
+                persons.add(Person.createRandom())
                 count++
 
                 if (count % CHECK_COUNT == 0L) {

@@ -1,6 +1,7 @@
 package com.example.oomreference.develop
 
-import com.example.oomreference.service.BasicService
+import com.example.oomreference.service.StrongReferenceService
+import com.example.oomreference.service.SoftReferenceService
 import com.example.oomreference.service.WeakReferenceService
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.PostMapping
@@ -10,21 +11,30 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("dev")
 class DevController(
-    private val basicService: BasicService,
-    private val weakReferenceService: WeakReferenceService
+    private val strongReferenceService: StrongReferenceService,
+    private val weakReferenceService: WeakReferenceService,
+    private val softReferenceService: SoftReferenceService
 ) {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    @PostMapping("basic")
+    @PostMapping("strong-ref")
     fun createBasic() {
-        log.info("basic start")
-        basicService.incMemory()
+        log.info("@@@ strong-reference start")
+        strongReferenceService.incMemory()
     }
 
     @PostMapping("weak-ref")
     fun createWeakReference() {
-        log.info("weak-reference start")
+        log.info("@@@ weak-reference start")
         weakReferenceService.incMemory()
     }
+
+    @PostMapping("soft-ref")
+    fun createSoftReference() {
+        log.info("@@@ soft-reference start")
+        softReferenceService.incMemory()
+    }
+
+
 }
