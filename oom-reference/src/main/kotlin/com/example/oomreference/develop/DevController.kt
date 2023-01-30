@@ -24,6 +24,12 @@ class DevController(
         strongReferenceService.incMemory()
     }
 
+    @PostMapping("strong-ref/static")
+    fun createBasicWithStatic() {
+        log.info("@@@ strong-reference start with static")
+        strongReferenceService.incMemoryWithStatic()
+    }
+
     @PostMapping("weak-ref")
     fun createWeakReference() {
         log.info("@@@ weak-reference start")

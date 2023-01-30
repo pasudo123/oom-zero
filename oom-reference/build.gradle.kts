@@ -21,6 +21,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     // mock & kotest & springboot-test
@@ -38,6 +41,7 @@ application {
     applicationDefaultJvmArgs = listOf(
         "-Xms400m",
         "-Xmx400m",
+        // "-XX:MetaspaceSize=200m",
         "-XX:+HeapDumpOnOutOfMemoryError",
         "-XX:HeapDumpPath=${project.rootDir}"
     )

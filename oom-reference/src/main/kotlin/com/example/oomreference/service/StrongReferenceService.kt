@@ -28,4 +28,26 @@ class StrongReferenceService {
             log.error("exception.message : ${exception.message}, count[$count]")
         }
     }
+
+    fun incMemoryWithStatic() {
+
+        var count = 0L
+
+        try {
+            while (true) {
+                sharePersons.add(Person.createRandom())
+                count++
+
+                if (count % CHECK_COUNT == 0L) {
+                    log.info("count : $count")
+                }
+            }
+        } catch (exception: Exception) {
+            log.error("exception.message : ${exception.message}, count[$count]}")
+        }
+    }
+
+    companion object {
+        val sharePersons = mutableListOf<Person>()
+    }
 }
