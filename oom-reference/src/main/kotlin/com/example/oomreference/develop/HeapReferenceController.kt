@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("dev")
-class DevController(
+class HeapReferenceController(
     private val strongReferenceService: StrongReferenceService,
     private val weakReferenceService: WeakReferenceService,
     private val softReferenceService: SoftReferenceService
@@ -41,6 +41,4 @@ class DevController(
         log.info("@@@ soft-reference start")
         softReferenceService.incMemory()
     }
-
-
 }

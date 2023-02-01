@@ -25,6 +25,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 
     // mock & kotest & springboot-test
     testImplementation("io.mockk:mockk:1.12.2")
@@ -41,7 +42,12 @@ application {
     applicationDefaultJvmArgs = listOf(
         "-Xms400m",
         "-Xmx400m",
-        // "-XX:MetaspaceSize=200m",
+        "-verbose:gc",
+        // "-XX:+PrintGCDetails", // deprecated
+        // java9 이상 -Xlog:gc 로 시작한다.
+        "-Xlog:gc*",
+        "-Xlog:gc*::time", // java9 이상
+        "-Xlog:gc*:file=${project.rootDir},filecount=5,filesize=50m",
         "-XX:+HeapDumpOnOutOfMemoryError",
         "-XX:HeapDumpPath=${project.rootDir}"
     )
