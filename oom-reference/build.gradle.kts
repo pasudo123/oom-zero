@@ -42,12 +42,8 @@ application {
     applicationDefaultJvmArgs = listOf(
         "-Xms400m",
         "-Xmx400m",
-        "-verbose:gc",
-        // "-XX:+PrintGCDetails", // deprecated
-        // java9 이상 -Xlog:gc 로 시작한다.
-        "-Xlog:gc*",
-        "-Xlog:gc*::time", // java9 이상
-        "-Xlog:gc*:file=${project.rootDir},filecount=5,filesize=50m",
+        "-Xlog:gc::time",
+        "-Xlog:gc*:file=${project.rootDir}/mygc.log,filecount=5,filesize=50m:time",
         "-XX:+HeapDumpOnOutOfMemoryError",
         "-XX:HeapDumpPath=${project.rootDir}"
     )

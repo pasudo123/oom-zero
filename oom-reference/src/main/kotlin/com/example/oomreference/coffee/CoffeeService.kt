@@ -1,5 +1,6 @@
 package com.example.oomreference.coffee
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -16,7 +17,7 @@ class CoffeeService {
         while (true) {
             val current = Coffee.createRandom()
 
-            if (current.price == 10L) {
+            if (current.price == 100L) {
                 log.info("[clear] coffee.size[${coffees.size}], current : $current")
                 coffees.clear()
             }
@@ -24,6 +25,7 @@ class CoffeeService {
             coffees.add(current)
 
             if (coffees.size % 10000 == 0) {
+                delay(1000)
                 log.info("coffee ${coffees.size} 돌파!!")
             }
         }
