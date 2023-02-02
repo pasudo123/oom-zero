@@ -24,7 +24,6 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 
     // mock & kotest & springboot-test

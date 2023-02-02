@@ -1,5 +1,7 @@
 ## oom-reference
-* OOM 을 발생시키고, 힙덤프 분석.
+* OOM 을 발생시키고, 힙덤프 분석
+  * -XX:+HeapDumpOnOutOfMemoryError
+  * -XX:HeapDumpPath=${힙덤프 생성할 경로}
 * gradle application plugins 를 이용
 * StrongReference vs SoftReference vs WeakReference 비교
   * [visualVM 으로 지표 비교](./README-visualvm.md)
@@ -17,6 +19,11 @@
     * -XX:+PrintGCDetails (디테일하게 노출)
     * -XX:+PrintGCTimeStamps (GC 발생 시간 : 애플리케이션 띄어지고 나서 경과된 시간)
     * -XX:+PrintGCDateStamps (GC 발생 시간 : 현재 설정된 타임존 시간 기준)
+* gc 파일 분석하기
+  * https://gceasy.io/ 를 이용하여 아래 내용들을 파악 가능
+    * GC 이전/이후 힙 메모리 지표
+    * GC 수행속도
+    * 오브젝트 크기 등
 
 ## reference
 * [gradle application plugins](https://docs.gradle.org/current/userguide/application_plugin.html)
