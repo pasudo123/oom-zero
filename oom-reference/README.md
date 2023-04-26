@@ -25,6 +25,13 @@
     * GC 수행속도
     * 오브젝트 크기 등
 
+## heapdump & threaddump
+* 도커 컨테이너 내부에서 application pid 가 1이다. ?
+ * jmap 으로 힙덤프 생성이 안된다. : https://github.com/docker-library/openjdk/issues/76
+* [jattach](https://github.com/jattach/jattach) 이용
+ * (힙덥프 생성) jattach ${pid} dumpheap ${heapdump-file-path}.hprof
+ * (스레드덤프 생성) jattach ${pid} threaddump > ${threaddump-file}.txt
+
 ## reference
 * [gradle application plugins](https://docs.gradle.org/current/userguide/application_plugin.html)
 
