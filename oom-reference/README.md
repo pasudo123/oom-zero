@@ -26,6 +26,8 @@
     * 오브젝트 크기 등
 
 ## heapdump & threaddump
+* docker exec -it —user=root {containerId} /bin/bash
+ * 특정한 유저로(root) 로 도커 컨테이너 내부 
 * 도커 컨테이너 내부에서 application pid 가 1이다. ?
   * jmap 으로 힙덤프 생성이 안된다. : https://github.com/docker-library/openjdk/issues/76
 * [jattach](https://github.com/jattach/jattach) 이용
