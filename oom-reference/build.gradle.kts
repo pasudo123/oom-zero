@@ -46,7 +46,6 @@ application {
         "-XX:+HeapDumpOnOutOfMemoryError",
         "-XX:HeapDumpPath=${project.rootDir}"
     )
-
 }
 
 tasks.withType<KotlinCompile> {
