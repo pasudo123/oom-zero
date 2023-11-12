@@ -46,6 +46,15 @@ application {
     * GC 수행속도
     * 오브젝트 크기 등
 
+## heapdump & threaddump
+* docker exec -it —user=root {containerId} /bin/bash
+  * 특정한 유저로(root) 로 도커 컨테이너 내부
+* 도커 컨테이너 내부에서 application pid 가 1이다. ?
+  * jmap 으로 힙덤프 생성이 안된다. : https://github.com/docker-library/openjdk/issues/76
+* [jattach](https://github.com/jattach/jattach) 이용
+  * (힙덥프 생성) jattach ${pid} dumpheap ${heapdump-file-path}.hprof
+  * (스레드덤프 생성) jattach ${pid} threaddump > ${threaddump-file}.txt
+
 ## JDK8 에서 Metaspace 영역 추가
 * JDK8 에서 Heap 사이즈의 일부를 차지하던 Permanent Generation 은 Metaspace 로 대체되었음 (링크 참고)
   * Metaspace 는 클래스의 메타데이터를 저장하는 동적 메모리 공간. 
@@ -60,9 +69,6 @@ Native Memory 영역을 트랙킹 하기 위한 명령어 및 방법
 * -XX:NativeMemoryTracking=summary 또는 -XX:NativeMemoryTracking=detail 옵션을 준다. (링크 참고)
   * `$ jcmd ${pid} VM.native_memory baseline` 명령어를 수행
 
-
-시리즈I am Developer!
-[Java Memory Profiling에 대하여] ① JVM 메모리 이해와 케이스 스터디
 ## reference
 * [gradle application plugins](https://docs.gradle.org/current/userguide/application_plugin.html)
 * [JDK 8에서 Perm 영역은 왜 삭제됐을까](https://johngrib.github.io/wiki/java8-why-permgen-removed/)
